@@ -13,7 +13,7 @@ stock_data = json.load(q)
 # Constants
 start_year = 2015
 present = 2018
-stock_price = .15
+stock_price = .3
 # Quarter
 acceptable_percentage_of_overall_for_quarter = .7
 acceptable_growth_for_quarter = .05
@@ -87,23 +87,38 @@ def monthly(month, year, stock):
 # When calling any price function make sure to check if row['prices'] > 0
 # Returns open price as a float
 def get_open_price(row):
-    return float(row['prices'][0])
+    price = row['prices'][0]
+    if "," in price:
+        price = price.replace(',', '')
+    return float(price)
 
 # Returns days highest price as a float
 def get_high_price(row):
-    return float(row['prices'][1])
+    price = row['prices'][1]
+    if "," in price:
+        price = price.replace(',', '')
+    return float(price)
 
 # Returns days lowest price as a float
 def get_low_price(row):
-    return float(row['prices'][2])
+    price = row['prices'][2]
+    if "," in price:
+        price = price.replace(',', '')
+    return float(price)
 
 # Returns closing price as a float
 def get_close_price(row):
-    return float(row['prices'][3])
+    price = row['prices'][3]
+    if "," in price:
+        price = price.replace(',', '')
+    return float(price)
 
 # Returns volume as an int
 def get_volume(row):
-    return int(row['prices'][4])
+    price = row['prices'][4]
+    if "," in price:
+        price = price.replace(',', '')
+    return float(price)
 
 # Changes calculation to percentages - used for display
 def to_percent(x):
@@ -194,6 +209,7 @@ def check_all_for_price():
         if len(row) > 0:
             if get_close_price(row[len(row)-1]) < stock_price:
                 stocks.append()
+                print(stocks)
     return stocks
 
 print(check_all_for_price())
