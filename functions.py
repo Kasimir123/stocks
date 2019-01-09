@@ -13,7 +13,7 @@ stock_data = json.load(q)
 # Constants
 start_year = 2015
 present = 2018
-stock_price = .3
+stock_price = 5.5
 # Quarter
 acceptable_percentage_of_overall_for_quarter = .7
 acceptable_growth_for_quarter = .05
@@ -208,8 +208,7 @@ def check_all_for_price():
         row = monthly('Dec', 2018, stock[0])
         if len(row) > 0:
             if get_close_price(row[len(row)-1]) < stock_price:
-                stocks.append()
-                print(stocks)
+                stocks.append(stock[0])
     return stocks
 
 print(check_all_for_price())
