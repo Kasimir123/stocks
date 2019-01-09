@@ -13,6 +13,7 @@ stock_data = json.load(q)
 # Constants
 start_year = 2015
 present = 2018
+stock_price = .15
 # Quarter
 acceptable_percentage_of_overall_for_quarter = .7
 acceptable_growth_for_quarter = .05
@@ -184,4 +185,15 @@ def loose_check_for_seasonal():
                     stocks.append(stock[0])
                     print(stocks)
 
-print(loose_check_for_seasonal())
+# Checks a stocks last closing price against a specific cost
+def check_all_for_price():
+    stocks = []
+    for stock in csv_f:
+        print(stock[0])
+        row = monthly('Dec', 2018, stock[0])
+        if len(row) > 0:
+            if get_close_price(row[len(row)-1]) < stock_price:
+                stocks.append()
+    return stocks
+
+print(check_all_for_price())
